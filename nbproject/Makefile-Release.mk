@@ -14,14 +14,14 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
-FC=gfortran
+CC=gcc-10
+CCC=g++-10
+CXX=g++-10
+FC=gfortran-10
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
+CND_PLATFORM=GNU_10-Linux
 CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -35,14 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Chromosome.o \
-	${OBJECTDIR}/DeltaStop.o \
-	${OBJECTDIR}/ElitistEvolution.o \
-	${OBJECTDIR}/MutateFractionGauss.o \
-	${OBJECTDIR}/NIterStop.o \
-	${OBJECTDIR}/auxFunctions.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/testProblem.o
+	${OBJECTDIR}/src/Chromosome.o \
+	${OBJECTDIR}/src/DeltaStop.o \
+	${OBJECTDIR}/src/GaussianMutator.o \
+	${OBJECTDIR}/src/IncreasingGaussianMutator.o \
+	${OBJECTDIR}/src/MutateFractionGauss.o \
+	${OBJECTDIR}/src/NIterStop.o \
+	${OBJECTDIR}/src/auxFunctions.o \
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/testProblem.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -53,17 +54,20 @@ TESTFILES= \
 
 # Test Object Files
 TESTOBJECTFILES= \
-	${TESTDIR}/UT.o \
-	${TESTDIR}/chromosomeTest.o \
-	${TESTDIR}/deltaStopTest.o \
-	${TESTDIR}/mutateFractionGaussTest.o
+	${TESTDIR}/tests/UT.o \
+	${TESTDIR}/tests/chromosomeTest.o \
+	${TESTDIR}/tests/deltaStopTest.o \
+	${TESTDIR}/tests/elitistRecombinationTest.o \
+	${TESTDIR}/tests/gaussianMutatorTest.o \
+	${TESTDIR}/tests/mutateFractionGaussTest.o \
+	${TESTDIR}/tests/nIterStopTest.o
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=--verbose
+CXXFLAGS=--verbose
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -82,45 +86,50 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/optimes: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/optimes ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Chromosome.o: Chromosome.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/Chromosome.o: src/Chromosome.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Chromosome.o Chromosome.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Chromosome.o src/Chromosome.cpp
 
-${OBJECTDIR}/DeltaStop.o: DeltaStop.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/DeltaStop.o: src/DeltaStop.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DeltaStop.o DeltaStop.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DeltaStop.o src/DeltaStop.cpp
 
-${OBJECTDIR}/ElitistEvolution.o: ElitistEvolution.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/GaussianMutator.o: src/GaussianMutator.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ElitistEvolution.o ElitistEvolution.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GaussianMutator.o src/GaussianMutator.cpp
 
-${OBJECTDIR}/MutateFractionGauss.o: MutateFractionGauss.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/IncreasingGaussianMutator.o: src/IncreasingGaussianMutator.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MutateFractionGauss.o MutateFractionGauss.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/IncreasingGaussianMutator.o src/IncreasingGaussianMutator.cpp
 
-${OBJECTDIR}/NIterStop.o: NIterStop.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/MutateFractionGauss.o: src/MutateFractionGauss.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NIterStop.o NIterStop.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/MutateFractionGauss.o src/MutateFractionGauss.cpp
 
-${OBJECTDIR}/auxFunctions.o: auxFunctions.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/NIterStop.o: src/NIterStop.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/auxFunctions.o auxFunctions.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/NIterStop.o src/NIterStop.cpp
 
-${OBJECTDIR}/main.o: main.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/auxFunctions.o: src/auxFunctions.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/auxFunctions.o src/auxFunctions.cpp
 
-${OBJECTDIR}/testProblem.o: testProblem.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/main.o: src/main.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testProblem.o testProblem.cpp
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/testProblem.o: src/testProblem.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/testProblem.o src/testProblem.cpp
 
 # Subprojects
 .build-subprojects:
@@ -129,137 +138,168 @@ ${OBJECTDIR}/testProblem.o: testProblem.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/UT.o ${TESTDIR}/chromosomeTest.o ${TESTDIR}/deltaStopTest.o ${TESTDIR}/mutateFractionGaussTest.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/UT.o ${TESTDIR}/tests/chromosomeTest.o ${TESTDIR}/tests/deltaStopTest.o ${TESTDIR}/tests/elitistRecombinationTest.o ${TESTDIR}/tests/gaussianMutatorTest.o ${TESTDIR}/tests/mutateFractionGaussTest.o ${TESTDIR}/tests/nIterStopTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lboost_unit_test_framework --verbose  
 
 
-${TESTDIR}/UT.o: UT.cpp 
-	${MKDIR} -p ${TESTDIR}
+${TESTDIR}/tests/UT.o: tests/UT.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/UT.o UT.cpp
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/UT.o tests/UT.cpp
 
 
-${TESTDIR}/chromosomeTest.o: chromosomeTest.cpp 
-	${MKDIR} -p ${TESTDIR}
+${TESTDIR}/tests/chromosomeTest.o: tests/chromosomeTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/chromosomeTest.o chromosomeTest.cpp
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/chromosomeTest.o tests/chromosomeTest.cpp
 
 
-${TESTDIR}/deltaStopTest.o: deltaStopTest.cpp 
-	${MKDIR} -p ${TESTDIR}
+${TESTDIR}/tests/deltaStopTest.o: tests/deltaStopTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/deltaStopTest.o deltaStopTest.cpp
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/deltaStopTest.o tests/deltaStopTest.cpp
 
 
-${TESTDIR}/mutateFractionGaussTest.o: mutateFractionGaussTest.cpp 
-	${MKDIR} -p ${TESTDIR}
+${TESTDIR}/tests/elitistRecombinationTest.o: tests/elitistRecombinationTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/mutateFractionGaussTest.o mutateFractionGaussTest.cpp
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/elitistRecombinationTest.o tests/elitistRecombinationTest.cpp
 
 
-${OBJECTDIR}/Chromosome_nomain.o: ${OBJECTDIR}/Chromosome.o Chromosome.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Chromosome.o`; \
+${TESTDIR}/tests/gaussianMutatorTest.o: tests/gaussianMutatorTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/gaussianMutatorTest.o tests/gaussianMutatorTest.cpp
+
+
+${TESTDIR}/tests/mutateFractionGaussTest.o: tests/mutateFractionGaussTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/mutateFractionGaussTest.o tests/mutateFractionGaussTest.cpp
+
+
+${TESTDIR}/tests/nIterStopTest.o: tests/nIterStopTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/nIterStopTest.o tests/nIterStopTest.cpp
+
+
+${OBJECTDIR}/src/Chromosome_nomain.o: ${OBJECTDIR}/src/Chromosome.o src/Chromosome.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Chromosome.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Chromosome_nomain.o Chromosome.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Chromosome_nomain.o src/Chromosome.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/Chromosome.o ${OBJECTDIR}/Chromosome_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/Chromosome.o ${OBJECTDIR}/src/Chromosome_nomain.o;\
 	fi
 
-${OBJECTDIR}/DeltaStop_nomain.o: ${OBJECTDIR}/DeltaStop.o DeltaStop.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/DeltaStop.o`; \
+${OBJECTDIR}/src/DeltaStop_nomain.o: ${OBJECTDIR}/src/DeltaStop.o src/DeltaStop.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/DeltaStop.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DeltaStop_nomain.o DeltaStop.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DeltaStop_nomain.o src/DeltaStop.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/DeltaStop.o ${OBJECTDIR}/DeltaStop_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/DeltaStop.o ${OBJECTDIR}/src/DeltaStop_nomain.o;\
 	fi
 
-${OBJECTDIR}/ElitistEvolution_nomain.o: ${OBJECTDIR}/ElitistEvolution.o ElitistEvolution.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/ElitistEvolution.o`; \
+${OBJECTDIR}/src/GaussianMutator_nomain.o: ${OBJECTDIR}/src/GaussianMutator.o src/GaussianMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/GaussianMutator.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ElitistEvolution_nomain.o ElitistEvolution.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GaussianMutator_nomain.o src/GaussianMutator.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/ElitistEvolution.o ${OBJECTDIR}/ElitistEvolution_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/GaussianMutator.o ${OBJECTDIR}/src/GaussianMutator_nomain.o;\
 	fi
 
-${OBJECTDIR}/MutateFractionGauss_nomain.o: ${OBJECTDIR}/MutateFractionGauss.o MutateFractionGauss.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/MutateFractionGauss.o`; \
+${OBJECTDIR}/src/IncreasingGaussianMutator_nomain.o: ${OBJECTDIR}/src/IncreasingGaussianMutator.o src/IncreasingGaussianMutator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/IncreasingGaussianMutator.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MutateFractionGauss_nomain.o MutateFractionGauss.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/IncreasingGaussianMutator_nomain.o src/IncreasingGaussianMutator.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/MutateFractionGauss.o ${OBJECTDIR}/MutateFractionGauss_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/IncreasingGaussianMutator.o ${OBJECTDIR}/src/IncreasingGaussianMutator_nomain.o;\
 	fi
 
-${OBJECTDIR}/NIterStop_nomain.o: ${OBJECTDIR}/NIterStop.o NIterStop.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/NIterStop.o`; \
+${OBJECTDIR}/src/MutateFractionGauss_nomain.o: ${OBJECTDIR}/src/MutateFractionGauss.o src/MutateFractionGauss.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/MutateFractionGauss.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NIterStop_nomain.o NIterStop.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/MutateFractionGauss_nomain.o src/MutateFractionGauss.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/NIterStop.o ${OBJECTDIR}/NIterStop_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/MutateFractionGauss.o ${OBJECTDIR}/src/MutateFractionGauss_nomain.o;\
 	fi
 
-${OBJECTDIR}/auxFunctions_nomain.o: ${OBJECTDIR}/auxFunctions.o auxFunctions.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/auxFunctions.o`; \
+${OBJECTDIR}/src/NIterStop_nomain.o: ${OBJECTDIR}/src/NIterStop.o src/NIterStop.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/NIterStop.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/auxFunctions_nomain.o auxFunctions.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/NIterStop_nomain.o src/NIterStop.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/auxFunctions.o ${OBJECTDIR}/auxFunctions_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/NIterStop.o ${OBJECTDIR}/src/NIterStop_nomain.o;\
 	fi
 
-${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
+${OBJECTDIR}/src/auxFunctions_nomain.o: ${OBJECTDIR}/src/auxFunctions.o src/auxFunctions.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/auxFunctions.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/auxFunctions_nomain.o src/auxFunctions.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/auxFunctions.o ${OBJECTDIR}/src/auxFunctions_nomain.o;\
 	fi
 
-${OBJECTDIR}/testProblem_nomain.o: ${OBJECTDIR}/testProblem.o testProblem.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/testProblem.o`; \
+${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/main.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testProblem_nomain.o testProblem.cpp;\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/testProblem.o ${OBJECTDIR}/testProblem_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/main_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/testProblem_nomain.o: ${OBJECTDIR}/src/testProblem.o src/testProblem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/testProblem.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Iinclude -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/testProblem_nomain.o src/testProblem.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/testProblem.o ${OBJECTDIR}/src/testProblem_nomain.o;\
 	fi
 
 # Run Test Targets

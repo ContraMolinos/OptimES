@@ -4,14 +4,17 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Chromosome.h</itemPath>
-      <itemPath>DeltaStop.h</itemPath>
-      <itemPath>ElitistEvolution.h</itemPath>
-      <itemPath>EvolutionaryAlg.h</itemPath>
-      <itemPath>MutateFractionGauss.h</itemPath>
-      <itemPath>NIterStop.h</itemPath>
-      <itemPath>auxFunctions.h</itemPath>
-      <itemPath>testProblem.h</itemPath>
+      <itemPath>include/Chromosome.h</itemPath>
+      <itemPath>include/DeltaStop.h</itemPath>
+      <itemPath>include/ElitistRecombination.h</itemPath>
+      <itemPath>include/EvolutionaryAlg.h</itemPath>
+      <itemPath>include/GaussianMutator.h</itemPath>
+      <itemPath>include/IncreasingGaussianMutator.h</itemPath>
+      <itemPath>include/MutateFractionGauss.h</itemPath>
+      <itemPath>include/NIterStop.h</itemPath>
+      <itemPath>include/OptimAuxFunctions.h</itemPath>
+      <itemPath>include/auxFunctions.h</itemPath>
+      <itemPath>include/testProblem.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,24 +23,28 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Chromosome.cpp</itemPath>
-      <itemPath>DeltaStop.cpp</itemPath>
-      <itemPath>ElitistEvolution.cpp</itemPath>
-      <itemPath>MutateFractionGauss.cpp</itemPath>
-      <itemPath>NIterStop.cpp</itemPath>
-      <itemPath>auxFunctions.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
-      <itemPath>testProblem.cpp</itemPath>
+      <itemPath>src/Chromosome.cpp</itemPath>
+      <itemPath>src/DeltaStop.cpp</itemPath>
+      <itemPath>src/GaussianMutator.cpp</itemPath>
+      <itemPath>src/IncreasingGaussianMutator.cpp</itemPath>
+      <itemPath>src/MutateFractionGauss.cpp</itemPath>
+      <itemPath>src/NIterStop.cpp</itemPath>
+      <itemPath>src/auxFunctions.cpp</itemPath>
+      <itemPath>src/main.cpp</itemPath>
+      <itemPath>src/testProblem.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
       <logicalFolder name="f1" displayName="UT" projectFiles="true" kind="TEST">
-        <itemPath>UT.cpp</itemPath>
-        <itemPath>chromosomeTest.cpp</itemPath>
-        <itemPath>deltaStopTest.cpp</itemPath>
-        <itemPath>mutateFractionGaussTest.cpp</itemPath>
+        <itemPath>tests/UT.cpp</itemPath>
+        <itemPath>tests/chromosomeTest.cpp</itemPath>
+        <itemPath>tests/deltaStopTest.cpp</itemPath>
+        <itemPath>tests/elitistRecombinationTest.cpp</itemPath>
+        <itemPath>tests/gaussianMutatorTest.cpp</itemPath>
+        <itemPath>tests/mutateFractionGaussTest.cpp</itemPath>
+        <itemPath>tests/nIterStopTest.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -51,51 +58,27 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU_10|GNU</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandlineTool>gcc-10</commandlineTool>
+        </cTool>
         <ccTool>
           <standard>11</standard>
           <incDir>
-            <pElem>../mlpack-master/build/include/</pElem>
+            <pElem>include</pElem>
           </incDir>
-          <commandLine>-lboost_unit_test_framework</commandLine>
+          <commandLine>--verbose</commandLine>
         </ccTool>
       </compileType>
-      <item path="Chromosome.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Chromosome.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="DeltaStop.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="DeltaStop.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="ElitistEvolution.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="ElitistEvolution.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="EvolutionaryAlg.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="MutateFractionGauss.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="MutateFractionGauss.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="NIterStop.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="NIterStop.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="UT.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="auxFunctions.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="auxFunctions.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="chromosomeTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <commandLine>-lboost_unit_test_framework --verbose</commandLine>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -111,13 +94,62 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/Chromosome.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/DeltaStop.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testProblem.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/ElitistRecombination.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testProblem.h" ex="false" tool="3" flavor2="0">
+      <item path="include/EvolutionaryAlg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/GaussianMutator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/IncreasingGaussianMutator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/MutateFractionGauss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/NIterStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OptimAuxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/auxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/testProblem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Chromosome.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DeltaStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/IncreasingGaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/MutateFractionGauss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NIterStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/auxFunctions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/testProblem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/UT.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/chromosomeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/nIterStopTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -132,6 +164,10 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>--verbose</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -140,38 +176,11 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Chromosome.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Chromosome.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="DeltaStop.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="DeltaStop.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="ElitistEvolution.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="ElitistEvolution.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="EvolutionaryAlg.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="MutateFractionGauss.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="MutateFractionGauss.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="NIterStop.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="NIterStop.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="UT.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="auxFunctions.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="auxFunctions.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="chromosomeTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <commandLine>-lboost_unit_test_framework --verbose</commandLine>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -187,13 +196,158 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/Chromosome.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/DeltaStop.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testProblem.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/ElitistRecombination.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testProblem.h" ex="false" tool="3" flavor2="0">
+      <item path="include/EvolutionaryAlg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/GaussianMutator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/IncreasingGaussianMutator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/MutateFractionGauss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/NIterStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OptimAuxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/auxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/testProblem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Chromosome.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DeltaStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/IncreasingGaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/MutateFractionGauss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NIterStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/auxFunctions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/testProblem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/UT.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/chromosomeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/nIterStopTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Profiling" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>gcc-10</commandlineTool>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>--verbose</commandLine>
+        </ccTool>
+      </compileType>
+      <folder path="TestFiles">
+        <linkerTool>
+          <commandLine>-lboost_unit_test_framework</commandLine>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <item path="include/Chromosome.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/DeltaStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/ElitistRecombination.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/EvolutionaryAlg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/GaussianMutator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/IncreasingGaussianMutator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/MutateFractionGauss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/NIterStop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OptimAuxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/auxFunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/testProblem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Chromosome.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DeltaStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/IncreasingGaussianMutator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/MutateFractionGauss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NIterStop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/auxFunctions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/testProblem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/UT.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/chromosomeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/nIterStopTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

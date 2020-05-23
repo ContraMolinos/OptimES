@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="1.82"/>
+    <errors>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Chromosome::fitness&apos; is not initialized in the constructor." verbose="Member variable &apos;Chromosome::fitness&apos; is not initialized in the constructor." cwe="398">
+            <location file="src/Chromosome.cpp" line="16"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Chromosome::fitness&apos; is not initialized in the constructor." verbose="Member variable &apos;Chromosome::fitness&apos; is not initialized in the constructor." cwe="398">
+            <location file="src/Chromosome.cpp" line="22"/>
+        </error>
+        <error id="functionConst" severity="style" msg="Technically the member function &apos;OptimES::Chromosome::operator&lt;&apos; can be const." verbose="The member function &apos;OptimES::Chromosome::operator&lt;&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" cwe="398" inconclusive="true">
+            <location file0="src/Chromosome.cpp" file="include/Chromosome.h" line="44"/>
+            <location file="src/Chromosome.cpp" line="70"/>
+        </error>
+        <error id="functionConst" severity="style" msg="Technically the member function &apos;OptimES::Chromosome::operator&gt;&apos; can be const." verbose="The member function &apos;OptimES::Chromosome::operator&gt;&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" cwe="398" inconclusive="true">
+            <location file0="src/Chromosome.cpp" file="include/Chromosome.h" line="45"/>
+            <location file="src/Chromosome.cpp" line="75"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/Chromosome.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;Chromosome&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;Chromosome&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/Chromosome.cpp" file="include/Chromosome.h" line="26"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;fit&apos; can be reduced." verbose="The scope of the variable &apos;fit&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="src/DeltaStop.cpp" line="58"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;DeltaStop::lastVal&apos; is not initialized in the constructor." verbose="Member variable &apos;DeltaStop::lastVal&apos; is not initialized in the constructor." cwe="398">
+            <location file="src/DeltaStop.cpp" line="18"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;DeltaStop::lastVal&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;DeltaStop::lastVal&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="src/DeltaStop.cpp" file="include/DeltaStop.h" line="45"/>
+            <location file="src/DeltaStop.cpp" line="24"/>
+        </error>
+        <error id="functionStatic" severity="performance" msg="Technically the member function &apos;OptimES::DeltaStop::evaluateFitness&apos; can be static." verbose="The member function &apos;OptimES::DeltaStop::evaluateFitness&apos; can be made a static function. Making a function static can bring a performance benefit since no &apos;this&apos; instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances?" cwe="398" inconclusive="true">
+            <location file0="src/DeltaStop.cpp" file="include/DeltaStop.h" line="44"/>
+            <location file="src/DeltaStop.cpp" line="55"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/DeltaStop.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/DeltaStop.cpp" file="include/DeltaStop.h" line="32"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;DeltaStop&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;DeltaStop&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/DeltaStop.cpp" file="include/DeltaStop.h" line="27"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/GaussianMutator.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;GaussianMutator&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;GaussianMutator&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/GaussianMutator.cpp" file="include/GaussianMutator.h" line="32"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/IncreasingGaussianMutator.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;IncreasingGaussianMutator&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;IncreasingGaussianMutator&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/IncreasingGaussianMutator.cpp" file="include/IncreasingGaussianMutator.h" line="23"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/MutateFractionGauss.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;MutateFractionGauss&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;MutateFractionGauss&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/MutateFractionGauss.cpp" file="include/MutateFractionGauss.h" line="27"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;NIterStop::nCalls&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;NIterStop::nCalls&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="src/NIterStop.cpp" file="include/NIterStop.h" line="25"/>
+            <location file="src/NIterStop.cpp" line="14"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;NIterStop::nCalls&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;NIterStop::nCalls&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="src/NIterStop.cpp" file="include/NIterStop.h" line="25"/>
+            <location file="src/NIterStop.cpp" line="18"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/NIterStop.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/NIterStop.cpp" file="include/NIterStop.h" line="20"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;NIterStop&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;NIterStop&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/NIterStop.cpp" file="include/NIterStop.h" line="18"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/auxFunctions.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;fitness&apos; can be reduced." verbose="The scope of the variable &apos;fitness&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file0="src/main.cpp" file="include/EvolutionaryAlg.h" line="70"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="src/main.cpp" file="include/ElitistRecombination.h" line="112"/>
+            <location file0="src/main.cpp" file="include/ElitistRecombination.h" line="31"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="src/main.cpp" file="include/ElitistRecombination.h" line="112"/>
+            <location file0="src/main.cpp" file="include/ElitistRecombination.h" line="43"/>
+        </error>
+        <error id="functionConst" severity="style" msg="Technically the member function &apos;OptimES::EvolutionaryAlg::getPopulation&apos; can be const." verbose="The member function &apos;OptimES::EvolutionaryAlg::getPopulation&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" cwe="398" inconclusive="true">
+            <location file0="src/main.cpp" file="include/EvolutionaryAlg.h" line="62"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/main.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/main.cpp" file="include/DeltaStop.h" line="32"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;testProblem&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;testProblem&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/main.cpp" file="include/testProblem.h" line="21"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/main.cpp" file="include/NIterStop.h" line="20"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;ElitistRecombination&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;ElitistRecombination&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/main.cpp" file="include/ElitistRecombination.h" line="25"/>
+        </error>
+        <error id="functionConst" severity="style" msg="Technically the member function &apos;OptimES::testProblem::evaluate&apos; can be const." verbose="The member function &apos;OptimES::testProblem::evaluate&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" cwe="398" inconclusive="true">
+            <location file0="src/testProblem.cpp" file="include/testProblem.h" line="23"/>
+            <location file="src/testProblem.cpp" line="29"/>
+        </error>
+        <error id="functionConst" severity="style" msg="Technically the member function &apos;OptimES::testProblem::getDim&apos; can be const." verbose="The member function &apos;OptimES::testProblem::getDim&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" cwe="398" inconclusive="true">
+            <location file0="src/testProblem.cpp" file="include/testProblem.h" line="24"/>
+            <location file="src/testProblem.cpp" line="52"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/testProblem.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;testProblem&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;testProblem&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src/testProblem.cpp" file="include/testProblem.h" line="21"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;testProblem&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;testProblem&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="src/testProblem.cpp" file="include/testProblem.h" line="19"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/chromosomeTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;chromosomePop2::chromosomeSize&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;chromosomePop2::chromosomeSize&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file="tests/deltaStopTest.cpp" line="36"/>
+            <location file="tests/deltaStopTest.cpp" line="20"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/deltaStopTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;DeltaStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/deltaStopTest.cpp" file="include/DeltaStop.h" line="32"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/ElitistRecombination.h" line="112"/>
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/ElitistRecombination.h" line="31"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;ElitistRecombination::mutator&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/ElitistRecombination.h" line="112"/>
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/ElitistRecombination.h" line="43"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="copyCtorAndEqOperator" severity="warning" msg="The class &apos;ElitistRecombination&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;." verbose="The class &apos;ElitistRecombination&apos; has &apos;copy constructor&apos; but lack of &apos;operator=&apos;.">
+            <location file0="tests/elitistRecombinationTest.cpp" file="include/ElitistRecombination.h" line="25"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/gaussianMutatorTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="initializerList" severity="style" msg="Member variable &apos;chromosomePop::chromosomeSize&apos; is in the wrong place in the initializer list." verbose="Member variable &apos;chromosomePop::chromosomeSize&apos; is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." cwe="398" inconclusive="true">
+            <location file="tests/mutateFractionGaussTest.cpp" line="35"/>
+            <location file="tests/mutateFractionGaussTest.cpp" line="19"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/mutateFractionGaussTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Chromosome&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/nIterStopTest.cpp" file="include/Chromosome.h" line="31"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;NIterStop&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="tests/nIterStopTest.cpp" file="include/NIterStop.h" line="20"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getDim&apos; is never used." verbose="The function &apos;getDim&apos; is never used." cwe="561">
+            <location file="src/testProblem.cpp" line="52"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setLimitsFunction&apos; is never used." verbose="The function &apos;setLimitsFunction&apos; is never used." cwe="561">
+            <location file="src/IncreasingGaussianMutator.cpp" line="44"/>
+        </error>
+        <error id="missingInclude" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config."/>
+    </errors>
+</results>
