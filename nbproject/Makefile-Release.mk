@@ -58,6 +58,7 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/chromosomeTest.o \
 	${TESTDIR}/tests/deltaStopTest.o \
 	${TESTDIR}/tests/elitistRecombinationTest.o \
+	${TESTDIR}/tests/evolutionaryAlgTest.o \
 	${TESTDIR}/tests/gaussianMutatorTest.o \
 	${TESTDIR}/tests/mutateFractionGaussTest.o \
 	${TESTDIR}/tests/nIterStopTest.o
@@ -138,7 +139,7 @@ ${OBJECTDIR}/src/testProblem.o: src/testProblem.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/UT.o ${TESTDIR}/tests/chromosomeTest.o ${TESTDIR}/tests/deltaStopTest.o ${TESTDIR}/tests/elitistRecombinationTest.o ${TESTDIR}/tests/gaussianMutatorTest.o ${TESTDIR}/tests/mutateFractionGaussTest.o ${TESTDIR}/tests/nIterStopTest.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/UT.o ${TESTDIR}/tests/chromosomeTest.o ${TESTDIR}/tests/deltaStopTest.o ${TESTDIR}/tests/elitistRecombinationTest.o ${TESTDIR}/tests/evolutionaryAlgTest.o ${TESTDIR}/tests/gaussianMutatorTest.o ${TESTDIR}/tests/mutateFractionGaussTest.o ${TESTDIR}/tests/nIterStopTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lboost_unit_test_framework --verbose  
 
@@ -165,6 +166,12 @@ ${TESTDIR}/tests/elitistRecombinationTest.o: tests/elitistRecombinationTest.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/elitistRecombinationTest.o tests/elitistRecombinationTest.cpp
+
+
+${TESTDIR}/tests/evolutionaryAlgTest.o: tests/evolutionaryAlgTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/evolutionaryAlgTest.o tests/evolutionaryAlgTest.cpp
 
 
 ${TESTDIR}/tests/gaussianMutatorTest.o: tests/gaussianMutatorTest.cpp 

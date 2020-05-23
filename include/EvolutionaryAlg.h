@@ -29,30 +29,30 @@ namespace OptimES
     template<typename ProblemType, typename EvolutionPolicy, typename StoppingPolicy>
     class EvolutionaryAlg {
     public:
-	EvolutionaryAlg(ProblemType& _problem, EvolutionPolicy& _evoType, StoppingPolicy& _stoppingCriteria): costFunc(_problem), evolution(_evoType), stopCriteria(_stoppingCriteria), popSize(0)
+	EvolutionaryAlg(ProblemType& _problem, EvolutionPolicy& _evoType, StoppingPolicy& _stoppingCriteria): mCostFunc(_problem), mEvolutionAlgo(_evoType), mStoppingCriteria(_stoppingCriteria), mPopSize(0)
 	{};
 
 	void setCostFunction(ProblemType _func)
 	{
-	    costFunc=_func;
+	    mCostFunc=_func;
 	}
 
 	void setPopulation(Chromosome** _c, uint _popSize)
 	{
-	    population.clear();
-	    popSize=_popSize;
-        population.reserve(popSize);
+	    mPopulation.clear();
+	    mPopSize=_popSize;
+        mPopulation.reserve(mPopSize);
         for(size_t i=0;i<_popSize;++i)
-            population.push_back(*_c[i]);
+            mPopulation.push_back(*_c[i]);
 	}
 
 	void run()
 	{
-	    while(!stopCriteria.stopCondition(population))
+	    while(!mStoppingCriteria.stopCondition(mPopulation))
 	    {
-            popSize=evolution.evolve(population);
-            for(uint i=0;i<popSize;++i)
-                costFunc.evaluate(population[i]);
+            mPopSize=mEvolutionAlgo.evolve(mPopulation);
+            for(uint i=0;i<mPopSize;++i)
+                mCostFunc.evaluate(mPopulation[i]);
 	    }
 	}
 
@@ -61,17 +61,19 @@ namespace OptimES
 
 	vector<Chromosome> getPopulation()
 	{
-	    return population;
+	    return mPopulation;
 	}
 
 	Chromosome getSolution()
 	{
+        if(mPopSize==0)
+            throw std::runtime_error("No population available.");
 	    double score=std::numeric_limits<double>::max();
 	    double fitness;
-	    uint solIdx=popSize;
-	    for(uint i=0;i<popSize;++i)
+	    uint solIdx=mPopSize-1;
+	    for(uint i=0;i<mPopSize;++i)
 	    {
-            fitness=population[i].getFitness();
+            fitness=mPopulation[i].getFitness();
             if(fitness<score)
             {
                 score=fitness;
@@ -79,15 +81,15 @@ namespace OptimES
             }
 	    }
 
-	    return population[solIdx];
+	    return mPopulation[solIdx];
 	}
 
     private:
-	ProblemType costFunc;
-	EvolutionPolicy evolution;
-	vector<Chromosome> population;
-	StoppingPolicy stopCriteria;
-	uint popSize;
+	ProblemType mCostFunc;
+	EvolutionPolicy mEvolutionAlgo;
+	vector<Chromosome> mPopulation;
+	StoppingPolicy mStoppingCriteria;
+	uint mPopSize;
 
     };
 }

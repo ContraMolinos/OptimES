@@ -42,6 +42,7 @@
         <itemPath>tests/chromosomeTest.cpp</itemPath>
         <itemPath>tests/deltaStopTest.cpp</itemPath>
         <itemPath>tests/elitistRecombinationTest.cpp</itemPath>
+        <itemPath>tests/evolutionaryAlgTest.cpp</itemPath>
         <itemPath>tests/gaussianMutatorTest.cpp</itemPath>
         <itemPath>tests/mutateFractionGaussTest.cpp</itemPath>
         <itemPath>tests/nIterStopTest.cpp</itemPath>
@@ -145,6 +146,8 @@
       </item>
       <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="tests/evolutionaryAlgTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
@@ -247,6 +250,8 @@
       </item>
       <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="tests/evolutionaryAlgTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/mutateFractionGaussTest.cpp" ex="false" tool="1" flavor2="0">
@@ -342,6 +347,8 @@
       <item path="tests/deltaStopTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/elitistRecombinationTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/evolutionaryAlgTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gaussianMutatorTest.cpp" ex="false" tool="1" flavor2="0">
       </item>

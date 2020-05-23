@@ -73,7 +73,6 @@ namespace OptimES
         for(const Chromosome& c:_population)
             mean+=c.getFitness();
         normalization=1.0/normalization;
-        std::cout<<counter++<<" "<<_population[0].getFitness()<<" "<<mean<<std::endl;
         
         std::uniform_int_distribution<> chooseMate(0,survivalPop-1);
         size_t childIdx=survivalPop;
