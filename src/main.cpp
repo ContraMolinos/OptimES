@@ -26,7 +26,7 @@ using namespace OptimES;
 int main(int argc, char** argv)
 {
     const uint chrSize=5;
-    const uint popSize=150;
+    const uint popSize=15;
     
     testProblem problem(chrSize);
     //Chromosome chr(chrSize);
@@ -48,10 +48,13 @@ int main(int argc, char** argv)
     GaussianMutator mut;
     ElitistRecombination<GaussianMutator> elEvo(0.2,0.3,0.5,mut);
     DeltaStop ds(1e-25);
-    NIterStop is(5e6);
+    NIterStop is(5e3);
     
     EvolutionaryAlg<testProblem,ElitistRecombination<GaussianMutator>,NIterStop> eAlg(problem, elEvo, is);
     eAlg.setPopulation(pop, popSize);
+    for(uint i=0;i<popSize;++i)
+        delete pop[i];
+    std::cout<<"Starting optimization."<<std::endl;
     std::chrono::high_resolution_clock::time_point before=std::chrono::high_resolution_clock::now();
     eAlg.run();
     std::chrono::high_resolution_clock::time_point after=std::chrono::high_resolution_clock::now();
